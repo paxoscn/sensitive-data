@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package dev.cn.sensitive_data.component;
+package dev.cn.common.sensitive_data.component;
 
 import java.lang.reflect.Field;
 import java.sql.Statement;
@@ -34,10 +34,10 @@ import org.apache.ibatis.plugin.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.AnnotationUtils;
 
-import dev.cn.sensitive_data.annotation.SensitiveData;
-import dev.cn.sensitive_data.annotation.SensitiveField;
-import dev.cn.sensitive_data.support.Constants;
-import dev.cn.sensitive_data.util.CryptUtils;
+import dev.cn.common.sensitive_data.annotation.SensitiveData;
+import dev.cn.common.sensitive_data.annotation.SensitiveField;
+import dev.cn.common.sensitive_data.support.Constants;
+import dev.cn.common.sensitive_data.util.CryptUtils;
 
 /**
  * 这里是对找出来的字符串结果集进行解密所以是ResultSetHandler

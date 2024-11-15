@@ -20,7 +20,7 @@
 
 ```xml
 <dependency>
-    <groupId>dev.cn</groupId>
+    <groupId>dev.cn.common</groupId>
     <artifactId>sensitive-data</artifactId>
     <version>1.0.0</version>
 </dependency>
@@ -32,7 +32,7 @@
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import dev.cn.sensitive_data.annotation.EnableTransparentCrypt;
+import dev.cn.common.sensitive_data.annotation.EnableTransparentCrypt;
 
 // 启用透明加解密
 @EnableTransparentCrypt
@@ -49,8 +49,8 @@ public class Application {
 ```java
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import dev.cn.sensitive_data.annotation.SensitiveData;
-import dev.cn.sensitive_data.annotation.SensitiveField;
+import dev.cn.common.sensitive_data.annotation.SensitiveData;
+import dev.cn.common.sensitive_data.annotation.SensitiveField;
 
 import lombok.Data;
 
@@ -115,6 +115,149 @@ WHERE tel NOT LIKE 'SENSITIVE_%';
 # 5 Contributing
 
 请联系: [unrealwalker@126.com](mailto:unrealwalker@126.com)
+
+## 发布步骤
+
+### 注册 Sonatype JIRA 账号
+
+1. 访问 https://issues.sonatype.org/secure/Signup!default.jspa 注册账号
+2. 创建 Issue 申请 Group ID (如 dev.cn)
+
+### 配置 GPG 签名
+
+```bash
+# 安装 GPG
+brew install gnupg    # MacOS
+apt install gnupg     # Ubuntu
+
+# 生成密钥对
+gpg --gen-key
+
+**请记住 GPG 密钥的密码短语**
+
+# 查看公钥
+gpg --list-keys
+
+# 将公钥发布到公钥服务器
+gpg --keyserver keyserver.ubuntu.com --send-keys 你的公钥ID
+```
+
+### 配置 Maven settings.xml
+
+```xml
+<settings>
+  <servers>
+    <server>
+      <id>central</id>
+      <!-- 需要先在https://central.sonatype.com/account获取Token -->
+      <username>使用Token加密后的Sonatype账号</username>
+      <password>使用Token加密后的Sonatype密码</password>
+    </server>
+    <server>
+      <id>gpg.passphrase</id>
+      <passphrase>GPG 密钥的密码短语</passphrase>
+    </server>
+  </servers>
+</settings>
+```
+
+### 配置项目 pom.xml
+
+```xml
+<project>
+    <name>敏感数据透明加解密工具</name>
+    <description>用于数据库敏感数据透明加解密的工具库</description>
+    <url>https://github.com/paxoscn/sensitive-data</url>
+    
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Mergen</name>
+            <email>unrealwalker@126.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com:paxoscn/sensitive-data.git</connection>
+        <developerConnection>scm:git:git@github.com:paxoscn/sensitive-data.git</developerConnection>
+        <url>https://github.com/paxoscn/sensitive-data</url>
+    </scm>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.6.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                </configuration>
+            </plugin>
+            <!-- 源码插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <!-- Javadoc 插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- GPG 签名插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+```
+
+### 发布
+
+```bash
+# 发布 SNAPSHOT 版本
+mvn --settings YourOwnSettings.xml clean deploy
+
+# 发布正式版本
+mvn --settings YourOwnSettings.xml clean deploy -P release
+```
+
+发布完成后登录 https://central.sonatype.com/publishing/deployments 查看发布状态。首次发布需要人工审核，通过后会自动同步到中央仓库，大约需要 2 小时。
 
 # 6 Authors and Acknowledgment
 

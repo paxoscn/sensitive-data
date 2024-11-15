@@ -1,4 +1,4 @@
-package dev.cn.data_crypt_demo.vo;
+package dev.cn.common.data_crypt_demo.vo;
 
 public class Response<D> {
     

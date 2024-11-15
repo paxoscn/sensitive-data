@@ -21,15 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package dev.cn.sensitive_data.annotation;
+package dev.cn.common.sensitive_data.support;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface SensitiveField {
-    
+/**
+ * 常量类
+ */
+public class Constants {
+    public static final String KEY_SENSITIVE = "SENSITIVE_";
 }

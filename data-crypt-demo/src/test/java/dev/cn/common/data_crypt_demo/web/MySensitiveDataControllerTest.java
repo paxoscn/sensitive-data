@@ -21,10 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package dev.cn.data_crypt_demo.web;
-
-import dev.cn.data_crypt_demo.po.MySensitiveDataPO;
-import dev.cn.data_crypt_demo.vo.Response;
+package dev.cn.common.data_crypt_demo.web;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -34,6 +31,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import dev.cn.common.data_crypt_demo.po.MySensitiveDataPO;
+import dev.cn.common.data_crypt_demo.vo.Response;
 import java.util.List;
 
 import javax.annotation.Resource;

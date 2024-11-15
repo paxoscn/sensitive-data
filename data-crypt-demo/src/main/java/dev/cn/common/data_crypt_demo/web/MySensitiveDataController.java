@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package dev.cn.data_crypt_demo.web;
+package dev.cn.common.data_crypt_demo.web;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,9 +33,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.cn.data_crypt_demo.mapper.MySensitiveDataMapper;
-import dev.cn.data_crypt_demo.po.MySensitiveDataPO;
-import dev.cn.data_crypt_demo.vo.Response;
+import dev.cn.common.data_crypt_demo.mapper.MySensitiveDataMapper;
+import dev.cn.common.data_crypt_demo.po.MySensitiveDataPO;
+import dev.cn.common.data_crypt_demo.vo.Response;
 
 import javax.annotation.Resource;
 import java.util.List;

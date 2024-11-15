@@ -21,17 +21,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package dev.cn.sensitive_data.annotation;
+package dev.cn.common.sensitive_data.annotation;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.springframework.context.annotation.Import;
 
-@Inherited
-@Target(ElementType.TYPE)
+import dev.cn.common.sensitive_data.component.DecryptInterceptor;
+import dev.cn.common.sensitive_data.component.EncryptInterceptor;
+
+import java.lang.annotation.*;
+
+/**
+ * 在项目入口处添加该注解，启用数据透明加解密功能.
+ */
 @Retention(RetentionPolicy.RUNTIME)
-public @interface SensitiveData {
-    
+@Target(ElementType.TYPE)
+@Documented
+@Import({ EncryptInterceptor.class, DecryptInterceptor.class })
+public @interface EnableTransparentCrypt {
 }

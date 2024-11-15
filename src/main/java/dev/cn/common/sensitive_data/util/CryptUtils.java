@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package dev.cn.sensitive_data.util;
+package dev.cn.common.sensitive_data.util;
 
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
@@ -49,11 +49,11 @@ public class CryptUtils {
      * @param keyAlgorithm 秘钥算法
      * @param cipherAlgorithm 加密算法
      * @return 返回Base64转码后的加密数据
-     * @throws NoSuchPaddingException
-     * @throws NoSuchAlgorithmException
-     * @throws InvalidKeyException
-     * @throws BadPaddingException
-     * @throws IllegalBlockSizeException
+     * @throws NoSuchPaddingException NoSuchPaddingException
+     * @throws NoSuchAlgorithmException NoSuchAlgorithmException
+     * @throws InvalidKeyException InvalidKeyException
+     * @throws BadPaddingException BadPaddingException
+     * @throws IllegalBlockSizeException IllegalBlockSizeException
      */
     public static String encrypt(String content, String key, String keyAlgorithm, String cipherAlgorithm)
             throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException,
@@ -78,11 +78,11 @@ public class CryptUtils {
      * @param keyAlgorithm 秘钥算法
      * @param cipherAlgorithm 加密算法
      * @return 返回解密后的内容
-     * @throws NoSuchPaddingException
-     * @throws NoSuchAlgorithmException
-     * @throws InvalidKeyException
-     * @throws BadPaddingException
-     * @throws IllegalBlockSizeException
+     * @throws NoSuchPaddingException NoSuchPaddingException
+     * @throws NoSuchAlgorithmException NoSuchAlgorithmException
+     * @throws InvalidKeyException InvalidKeyException
+     * @throws BadPaddingException BadPaddingException
+     * @throws IllegalBlockSizeException IllegalBlockSizeException
      */
     public static String decrypt(String content, String key, String keyAlgorithm, String cipherAlgorithm)
             throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException,

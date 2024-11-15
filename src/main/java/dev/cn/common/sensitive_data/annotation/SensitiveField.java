@@ -21,23 +21,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package dev.cn.data_crypt_demo;
+package dev.cn.common.sensitive_data.annotation;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-import dev.cn.sensitive_data.annotation.EnableTransparentCrypt;
-
-import lombok.extern.slf4j.Slf4j;
-
-@EnableTransparentCrypt
-@SpringBootApplication(scanBasePackages = {"dev.cn.data_crypt_demo"})
-@MapperScan("dev.cn.data_crypt_demo.mapper")
-@Slf4j
-public class Application {
-
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface SensitiveField {
+    
 }

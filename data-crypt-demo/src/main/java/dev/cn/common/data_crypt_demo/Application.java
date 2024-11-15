@@ -21,23 +21,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package dev.cn.data_crypt_demo.po;
+package dev.cn.common.data_crypt_demo;
 
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import dev.cn.sensitive_data.annotation.SensitiveData;
-import dev.cn.sensitive_data.annotation.SensitiveField;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import lombok.Data;
+import dev.cn.common.sensitive_data.annotation.EnableTransparentCrypt;
 
-@SensitiveData
-@Data
-@TableName("tbl_my_sensitive_data")
-public class MySensitiveDataPO {
-    
-    @TableId
-    private Long id;
-    private String name;
-    @SensitiveField
-    private String tel;
+import lombok.extern.slf4j.Slf4j;
+
+@EnableTransparentCrypt
+@SpringBootApplication(scanBasePackages = {"dev.cn.common.data_crypt_demo"})
+@MapperScan("dev.cn.common.data_crypt_demo.mapper")
+@Slf4j
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 }

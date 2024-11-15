@@ -21,8 +21,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package dev.cn.sensitive_data.support;
+package dev.cn.common.data_crypt_demo.mapper;
 
-public class Constants {
-    public static final String KEY_SENSITIVE = "SENSITIVE_";
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import dev.cn.common.data_crypt_demo.po.MySensitiveDataPO;
+
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface MySensitiveDataMapper extends BaseMapper<MySensitiveDataPO> {
+    
 }

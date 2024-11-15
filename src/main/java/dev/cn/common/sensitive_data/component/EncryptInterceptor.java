@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package dev.cn.sensitive_data.component;
+package dev.cn.common.sensitive_data.component;
 
 import java.lang.reflect.Field;
 import java.sql.PreparedStatement;
@@ -35,13 +35,13 @@ import org.apache.ibatis.plugin.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.AnnotationUtils;
 
-import dev.cn.sensitive_data.annotation.SensitiveData;
-import dev.cn.sensitive_data.annotation.SensitiveField;
-import dev.cn.sensitive_data.support.Constants;
-import dev.cn.sensitive_data.util.CryptUtils;
+import dev.cn.common.sensitive_data.annotation.SensitiveData;
+import dev.cn.common.sensitive_data.annotation.SensitiveField;
+import dev.cn.common.sensitive_data.support.Constants;
+import dev.cn.common.sensitive_data.util.CryptUtils;
 
 /**
- * @Intercepts注解开启拦截器
+ * Intercepts注解开启拦截器
  * type 属性指定当前拦截器使用StatementHandler 、ResultSetHandler、ParameterHandler，Executor的一种
  * method 属性指定使用以上四种类型的具体方法（可进入class内部查看其方法）。
  * args 属性指定预编译语句

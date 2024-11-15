@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package dev.cn.sensitive_data.util;
+package dev.cn.common.sensitive_data.util;
 
 import org.junit.jupiter.api.Test;
 

@@ -21,13 +21,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package dev.cn.data_crypt_demo.mapper;
+package dev.cn.common.data_crypt_demo.po;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
-import dev.cn.data_crypt_demo.po.MySensitiveDataPO;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import dev.cn.common.sensitive_data.annotation.SensitiveData;
+import dev.cn.common.sensitive_data.annotation.SensitiveField;
 
-@Mapper
-public interface MySensitiveDataMapper extends BaseMapper<MySensitiveDataPO> {
+import lombok.Data;
+
+@SensitiveData
+@Data
+@TableName("tbl_my_sensitive_data")
+public class MySensitiveDataPO {
     
+    @TableId
+    private Long id;
+    private String name;
+    @SensitiveField
+    private String tel;
 }
