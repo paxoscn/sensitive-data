@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+    <!--控制台日志输出配置，可以匹配色彩和高亮-->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${log.app.pattern}</pattern>
+            <charset>${log.charset}</charset>
+        </encoder>
+    </appender>
+</included>

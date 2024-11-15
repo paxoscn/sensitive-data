@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <property name="log.context.name" value="sensitive-data" />
+    <!--继承默认配置-->
+    <include resource="logback-spring-config.xml" />
+    <!--继承默认appender-->
+    <include resource="logback-spring-appender.xml" />
+    <!--继承默认logger配置-->
+    <include resource="logback-spring-logger.xml" />
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

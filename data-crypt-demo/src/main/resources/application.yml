@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: data-crypt-demo
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3311/db_sensitive_data?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true&useSSL=false&serverZoneId=Asia/Shanghai
+    username: root
+    password: myrootpassword
+    type: com.zaxxer.hikari.HikariDataSource
+logging:
+  config: classpath:logback-spring.xml
+mybatis-plus:
+  check-config-location: false
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/*.xml
+sensitive-data:
+  data-crypt:
+    enabled: true
+    key-algorithm: AES
+    cipher-algorithm: AES/ECB/PKCS5Padding
+    key: my-secret-key-1234567890

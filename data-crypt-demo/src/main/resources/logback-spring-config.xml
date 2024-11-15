@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+    <!--配置日志的上下文名称，需要服务自行配置-->
+    <springProperty scope="context" name="log.context.name" source="spring.application.name" />
+    <contextName>${log.context.name}</contextName>
+    <!--日志的字符编码-->
+    <springProperty scope="context" name="log.charset" source="log.charset" defaultValue="UTF-8" />
+    <!--历史记录最大保存天数-->
+    <springProperty scope="context" name="log.maxHistory" source="log.maxHistory" defaultValue="30" />
+    <!--最大单个日志大小-->
+    <springProperty scope="context" name="log.maxSize" source="log.maxSize" defaultValue="1gb" />
+    <!--日志Error级别名称配置-->
+    <springProperty scope="context" name="log.error.log.level" source="log.error.log.level"
+        defaultValue="ERROR" />
+    <!--异步写日志的队列大小配置，默认为256-->
+    <springProperty scope="context" name="log.async.queue.size" source="log.async.queue.size"
+        defaultValue="512" />
+    <!-- app.pattern 时间、日志级别、线程、traceID、服务方法路径（HTTP或GrpcServer）、集团ID、店铺ID、用户、订单号、拓展信息、日志主要信息 -->
+    <springProperty scope="context" name="log.app.pattern" source="log.app.pattern"
+        defaultValue="%d{yyyy-MM-dd HH:mm:ss.SSS} %level{} [%thread] %X{traceID} %X{path} %X{groupID} %X{shopID} %X{user} %X{orderKey} %X{extension} %msg%n" />
+    <!-- debug.pattern 时间、traceID、日志主要信息 -->
+    <springProperty scope="context" name="log.debug.pattern" source="log.debug.pattern"
+        defaultValue="%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceID} %msg%n" />
+    <!-- heartbeat.pattern 时间、线程、日志主要信息 -->
+    <springProperty scope="context" name="log.heartbeat.pattern" source="log.heartbeat.pattern"
+        defaultValue="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %msg%n" />
+</included>
