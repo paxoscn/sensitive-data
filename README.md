@@ -1,4 +1,8 @@
-# 敏感数据加解密工具
+# 敏感数据透明加解密工具
+
+## 文档链接
+
+[敏感数据透明加解密工具 https://cn.dev/mergen/sensitive-data-transparent-crypt](https://cn.dev/mergen/sensitive-data-transparent-crypt)
 
 ## 1. Background
 
@@ -132,8 +136,7 @@ apt install gnupg     # Ubuntu
 
 # 生成密钥对
 gpg --gen-key
-
-**请记住 GPG 密钥的密码短语**
+# 请记住GPG密钥的密码短语
 
 # 查看公钥
 gpg --list-keys
@@ -155,7 +158,7 @@ gpg --keyserver keyserver.ubuntu.com --send-keys 你的公钥ID
     </server>
     <server>
       <id>gpg.passphrase</id>
-      <passphrase>GPG 密钥的密码短语</passphrase>
+      <passphrase>GPG密钥的密码短语</passphrase>
     </server>
   </servers>
 </settings>
