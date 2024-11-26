@@ -36,7 +36,7 @@ import org.springframework.core.annotation.AnnotationUtils;
 
 import dev.cn.common.sensitive_data.annotation.SensitiveData;
 import dev.cn.common.sensitive_data.annotation.SensitiveField;
-import dev.cn.common.sensitive_data.support.Constants;
+import dev.cn.common.sensitive_data.support.ValueHelper;
 import dev.cn.common.sensitive_data.util.CryptUtils;
 
 /**
@@ -131,8 +131,8 @@ public class DecryptInterceptor implements Interceptor {
                 if (object instanceof String) {
                     String value = (String) object;
                     //修改：没有标识则不解密
-                    if(value.startsWith(Constants.KEY_SENSITIVE)) {
-                        value = value.substring(10);
+                    if(ValueHelper.isEncrypted(value)) {
+                        value = ValueHelper.unprefixEncryptedValue(value);
                         value = CryptUtils.decrypt(value, key, keyAlgorithm, cipherAlgorithm);
                     }
                     //对注解在这段进行逐一解密

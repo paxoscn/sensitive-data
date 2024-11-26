@@ -26,7 +26,7 @@
 <dependency>
     <groupId>dev.cn.common</groupId>
     <artifactId>sensitive-data</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
@@ -113,7 +113,8 @@ WHERE tel NOT LIKE 'SENSITIVE_%';
 
 # 4 Roadmap
 
-* 2024-12-31 1.1.0 支持JPA
+* 2024-12-31 1.2.0 支持JPA
+* 2024-11-26 1.1.0 增加前缀工具方法
 * 2024-11-15 1.0.0 支持MyBatis
 
 # 5 Contributing
@@ -274,4 +275,4 @@ MIT
 
 # 8 Project Status
 
-1.0.0 已发布
+1.1.0 已发布

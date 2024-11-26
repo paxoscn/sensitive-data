@@ -37,7 +37,7 @@ import org.springframework.core.annotation.AnnotationUtils;
 
 import dev.cn.common.sensitive_data.annotation.SensitiveData;
 import dev.cn.common.sensitive_data.annotation.SensitiveField;
-import dev.cn.common.sensitive_data.support.Constants;
+import dev.cn.common.sensitive_data.support.ValueHelper;
 import dev.cn.common.sensitive_data.util.CryptUtils;
 
 /**
@@ -139,9 +139,9 @@ public class EncryptInterceptor implements Interceptor {
                     String value = (String) object;
                     String encrypt = value;
                     //修改: 如果有标识则不加密，没有则加密并加上标识前缀
-                    if(!value.startsWith(Constants.KEY_SENSITIVE)) {
+                    if(!ValueHelper.isEncrypted(value)) {
                         encrypt = CryptUtils.encrypt(value, key, keyAlgorithm, cipherAlgorithm);
-                        encrypt = Constants.KEY_SENSITIVE + encrypt;
+                        encrypt = ValueHelper.prefixEncryptedValue(encrypt);
                     }
                     //开始对字段加密使用自定义的AES加密工具
                     aesField.set(paramsObject, encrypt);

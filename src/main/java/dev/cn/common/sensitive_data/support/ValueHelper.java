@@ -24,8 +24,42 @@
 package dev.cn.common.sensitive_data.support;
 
 /**
- * 常量类
+ * 值处理工具类
+ * 
+ * @since 1.1.0
  */
-public class Constants {
-    static final String KEY_SENSITIVE = "SENSITIVE_";
+public class ValueHelper {
+
+    /**
+     * 根据是否有前缀判断是否是加密过的值
+     * 
+     * @since 1.1.0
+     * @param value 需要判断的值
+     * @return 是否是加密过的值
+     */
+    public static boolean isEncrypted(String value) {
+        return value.startsWith(Constants.KEY_SENSITIVE);
+    }
+
+    /**
+     * 给加密过的值加上前缀
+     * 
+     * @since 1.1.0
+     * @param encryptedValue 加密过的值
+     * @return 加上前缀后的值
+     */
+    public static String prefixEncryptedValue(String encryptedValue) {
+        return Constants.KEY_SENSITIVE + encryptedValue;
+    }
+
+    /**
+     * 去掉加密过的值的前缀
+     * 
+     * @since 1.1.0
+     * @param prefixedEncryptedValue 带有前缀的加密过的值
+     * @return 去掉前缀后的值
+     */
+    public static String unprefixEncryptedValue(String prefixedEncryptedValue) {
+        return prefixedEncryptedValue.substring(Constants.KEY_SENSITIVE.length());
+    }
 }
